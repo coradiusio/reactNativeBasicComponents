@@ -25,6 +25,7 @@ import Heading from './components/heading';
 import Icon from './components/icon';
 import Label from './components/label';
 import Loader from './components/loader';
+import QRCodeScan from './components/qr_code_scan';
 import RadioChoices from './components/radio_choices';
 import RadioForm from './components/radio_form';
 import Separator from './components/separator';
@@ -64,6 +65,7 @@ export {
   Icon,
   Label,
   Loader,
+  QRCodeScan,
   RadioChoices,
   RadioForm,
   Separator,
