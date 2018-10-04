@@ -100,6 +100,14 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 32,
     padding: 8,
+    paddingLeft: 16,
+    paddingRight: 16,
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 5,
+    shadowOpacity: 1.0,
   },
   innerContainer: {
     flex: 1,
