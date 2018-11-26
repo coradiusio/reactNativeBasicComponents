@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
-import Title from './title';
+import Title from './title'
 
 export default class CircularButton extends React.PureComponent {
-  render() {
+  render () {
     return (
       <View
         style={[styles.container, this.props.style]}
@@ -22,7 +22,7 @@ export default class CircularButton extends React.PureComponent {
           text={this.props.label}
         />
       </View>
-    );
+    )
   }
 }
 
@@ -36,11 +36,10 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     minWidth: 70,
-    marginRight: 16,
+    marginRight: 16
   },
   textStyle: {
     color: colors.blueG80,
     textAlign: 'center'
   }
-});
-
+})

@@ -1,35 +1,35 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   TextInput as ReactTextInput,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
 export default class TextInput extends React.PureComponent {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <ReactTextInput
           placeholderTextColor={colors.grey}
           style={styles.inputStyle}
           selectionColor={colors.primary}
-          underlineColorAndroid="transparent"
+          underlineColorAndroid='transparent'
           autoCorrect={false}
           {...this.props}
         />
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   inputStyle: {
     flex: 1,
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     padding: 0
   }
-});
+})

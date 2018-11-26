@@ -1,36 +1,36 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet,
   TouchableOpacity
-} from 'react-native';
+} from 'react-native'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
-import EllipticalButton from './elliptical_button';
+import EllipticalButton from './elliptical_button'
 
 export default class RadioChoices extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       value: props.initial || ''
     }
   }
 
-  handleButton(label, value) {
-    this.setState({ value });
+  handleButton (label, value) {
+    this.setState({ value })
     if (typeof this.props.onChange === 'function') {
-      this.props.onChange({ label, value});
+      this.props.onChange({ label, value })
     }
   }
 
-  render() {
+  render () {
     const {
       choices
-    } = this.props;
+    } = this.props
 
     return (
       <View style={[styles.buttonsContainer, this.props.buttonsContainerStyle]}>
@@ -49,7 +49,7 @@ export default class RadioChoices extends React.PureComponent {
           ))
         }
       </View>
-    );
+    )
   }
 }
 
@@ -60,10 +60,9 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   fillContainer: {
-    backgroundColor: colors.green,
+    backgroundColor: colors.green
   },
   lightText: {
-    color: colors.white,
+    color: colors.white
   }
-});
-
+})

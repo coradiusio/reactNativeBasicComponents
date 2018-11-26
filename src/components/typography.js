@@ -1,27 +1,27 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Text
-} from 'react-native';
+} from 'react-native'
 
-import { material } from 'react-native-typography';
+import { material } from 'react-native-typography'
 
 export default class Typography extends React.PureComponent {
-  render() {
+  render () {
     const {
       type
-    } = this.props;
+    } = this.props
 
     return (
       <Text
         style={[
           type === 'overline' ? material['caption'] : material[type || 'subheading'],
-          type === 'overline' ? {fontSize: 10} : null,
+          type === 'overline' ? { fontSize: 10 } : null,
           this.props.style
         ]}
       >
         {this.props.text}
       </Text>
-    );
+    )
   }
 }

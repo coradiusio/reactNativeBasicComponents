@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   Text,
   StyleSheet,
-  ART,
-} from 'react-native';
+  ART
+} from 'react-native'
 
-const { Surface, Shape, Path, Group } = ART;
+const { Surface, Shape, Path, Group } = ART
 
 const sumOfObjectKeyInArray = (items, prop) => {
-  return items.reduce( function(a, b){
-    return a + b[prop];
-  }, 0);
-};
+  return items.reduce(function (a, b) {
+    return a + b[prop]
+  }, 0)
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    position: 'relative',
+    position: 'relative'
   },
   innerContainer: {
     position: 'absolute',
     left: 0,
     right: 0,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   dotsContainer: {
     position: 'absolute',
@@ -35,31 +35,39 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     left: 0,
     right: 0,
-    bottom: 30,
+    bottom: 30
   },
   dot: {
     width: 7,
     height: 7,
-    borderWidth:1,
+    borderWidth: 1,
     borderRadius: 7,
     backgroundColor: 'transparent',
     marginLeft: 2,
-    marginRight: 2,
+    marginRight: 2
   }
-});
+})
 
-const childrenFunction = (value = 0, texts_list = [], fillColor, styles, valuePrefix) => (
+const childrenFunction = (value = 0, textsList = [], fillColor, styles, valuePrefix) => (
   <View style={{ flex: 1, alignItems: 'center' }}>
-    <Text style={[styles.valueStyle, {color: fillColor ? fillColor : styles.textStyle.color}]}>{valuePrefix || ''}{typeof value === 'string' ? value : parseInt(value, 10)}</Text>
+    <Text style={[styles.valueStyle, { color: fillColor || styles.textStyle.color }]}>
+      {valuePrefix || ''}{typeof value === 'string' ? value : parseInt(value, 10)}
+    </Text>
     {
-      texts_list.map((text, index) => <Text key={index} style={[styles.textStyle, {color: fillColor ? fillColor : styles.textStyle.color, width: 150, textAlign: 'center'}]}>{text}</Text>)
+      textsList.map((text, index) => {
+        return (
+          <Text key={index} style={[styles.textStyle, { color: fillColor || styles.textStyle.color, width: 150, textAlign: 'center' }]}>
+            {text}
+          </Text>
+        )
+      })
     }
   </View>
-);
+)
 
 export default class CircularProgress extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       index: 0,
       data: [],
@@ -68,46 +76,46 @@ export default class CircularProgress extends React.PureComponent {
       rotation: 0,
       fillValue: props.fillValue || 0,
       backgroundColor: '#000000',
-      fillColor: '#FFFFFF',
+      fillColor: '#FFFFFF'
     }
   }
 
-  circlePath(cx, cy, radius, startDegree, endDegree, startMoveToPoint, endMoveToPoint) {
-    let p = new Path();
+  circlePath (cx, cy, radius, startDegree, endDegree, startMoveToPoint, endMoveToPoint) {
+    let p = new Path()
     if (startMoveToPoint) {
-      p.path.push(0, startMoveToPoint[0], startMoveToPoint[1]);
+      p.path.push(0, startMoveToPoint[0], startMoveToPoint[1])
     }
 
-    p.path.push(4, cx, cy, radius, startDegree * Math.PI / 180, endDegree * Math.PI / 180, 1);
+    p.path.push(4, cx, cy, radius, startDegree * Math.PI / 180, endDegree * Math.PI / 180, 1)
 
     if (endMoveToPoint) {
-      p.path.push(0, endMoveToPoint[0], endMoveToPoint[1]);
+      p.path.push(0, endMoveToPoint[0], endMoveToPoint[1])
     }
 
-    return p;
+    return p
   }
 
-  validateFillPercentage(fillPercentage) {
+  validateFillPercentage (fillPercentage) {
     if (fillPercentage < 0) {
-      return 0;
+      return 0
     } else if (fillPercentage > 100) {
-      return 100;
+      return 100
     }
 
-    return fillPercentage;
+    return fillPercentage
   }
 
-  validateFillValue(fillValue, maxValue) {
+  validateFillValue (fillValue, maxValue) {
     if (fillValue < 0) {
-      return 0;
+      return 0
     } else if (fillValue > maxValue) {
-      return maxValue;
+      return maxValue
     }
 
-    return fillValue;
+    return fillValue
   }
 
-  render() {
+  render () {
     const {
       size,
       thickness,
@@ -117,7 +125,7 @@ export default class CircularProgress extends React.PureComponent {
       fillColor,
       index,
       data,
-      mapping_data,
+      mappingData,
       children,
       childrenStyle,
       showSliderDots,
@@ -127,125 +135,120 @@ export default class CircularProgress extends React.PureComponent {
       totalDots,
       staticCenterText,
       showOnlyOneFillColor,
-      texts,
-    } = this.props;
+      texts
+    } = this.props
 
-    let maxValue = this.props.maxValue;
+    let maxValue = this.props.maxValue
 
     if (maxValue === undefined) {
-      maxValue = sumOfObjectKeyInArray(mapping_data, 'value');
+      maxValue = sumOfObjectKeyInArray(mappingData, 'value')
     }
 
-    const halfSize = size / 2;
-    const radius = halfSize - thickness / 2;
+    const halfSize = size / 2
+    const radius = halfSize - thickness / 2
 
-    const paths_data = [];
+    const pathsData = []
 
-    let validatedFillValue;
-    let startAngle = 0;
-    let endAngle = 0;
-    let circlePath;
-    let texts_list;
-    let startX;
-    let startY;
-    let endX;
-    let endY;
+    let validatedFillValue
+    let startAngle = 0
+    let endAngle = 0
+    let circlePath
+    let textsList
+    let startX
+    let startY
+    let endX
+    let endY
 
-    let runningData = 0;
+    let runningData = 0
 
-    let centerTextEvaluateFunction = null;
+    let centerTextEvaluateFunction = null
     if (children && typeof children === 'function') {
-      centerTextEvaluateFunction = children;
+      centerTextEvaluateFunction = children
     } else {
-      centerTextEvaluateFunction = childrenFunction;
+      centerTextEvaluateFunction = childrenFunction
     }
 
     if ((data === undefined && fillValue !== undefined) || showOnlyOneFillColor) {
+      startX = halfSize + radius
+      startY = halfSize
 
-      startX = halfSize + radius;
-      startY = halfSize;
+      validatedFillValue = this.validateFillValue(fillValue, maxValue)
+      endAngle = (360 * (validatedFillValue / maxValue))
 
-      validatedFillValue = this.validateFillValue(fillValue, maxValue);
-      endAngle = (360 * (validatedFillValue / maxValue));
+      circlePath = this.circlePath(halfSize, halfSize, radius, startAngle, endAngle, [startX, startY])
 
-      circlePath = this.circlePath(halfSize, halfSize, radius, startAngle, endAngle, [startX, startY]);
-      
-      paths_data.push({
+      pathsData.push({
         path: circlePath,
-        fillColor: (data && data[index].fillColor) || fillColor,
-      });
+        fillColor: (data && data[index].fillColor) || fillColor
+      })
 
-      texts_list = (data && data[index].texts) || texts || [];
+      textsList = (data && data[index].texts) || texts || []
     } else {
-      data.map((one_data, mainIndex) => {
-        const mainIndexValue = one_data.value;
+      data.map((oneData, mainIndex) => {
+        const mainIndexValue = oneData.value
         if (doAnimation && index === mainIndex) {
-          runningData += fillValue;
-          validatedFillValue = this.validateFillValue(runningData, maxValue);
+          runningData += fillValue
+          validatedFillValue = this.validateFillValue(runningData, maxValue)
         } else {
-          runningData += mainIndexValue;
-          validatedFillValue = this.validateFillValue(runningData, maxValue);
+          runningData += mainIndexValue
+          validatedFillValue = this.validateFillValue(runningData, maxValue)
         }
-  
-        startAngle = startAngle;
-        endAngle = (360 * (validatedFillValue / maxValue));
-        
+
+        endAngle = (360 * (validatedFillValue / maxValue))
+
         if (mainIndex === 0) {
-          startX = halfSize + radius;
-          startY = halfSize;
+          startX = halfSize + radius
+          startY = halfSize
         } else {
           if (doAnimation && index === mainIndex) {
-            startX = (radius * (1 + Math.cos((360 - (360 * ((runningData - fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
-            startY = (radius * (1 - Math.sin((360 - (360 * ((runningData - fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
+            startX = (radius * (1 + Math.cos((360 - (360 * ((runningData - fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
+            startY = (radius * (1 - Math.sin((360 - (360 * ((runningData - fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
           } else {
-            startX = (radius * (1 + Math.cos((360 - (360 * ((runningData - mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
-            startY = (radius * (1 - Math.sin((360 - (360 * ((runningData - mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
+            startX = (radius * (1 + Math.cos((360 - (360 * ((runningData - mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
+            startY = (radius * (1 - Math.sin((360 - (360 * ((runningData - mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
           }
         }
-  
+
         if (doAnimation && index === mainIndex) {
-          endX = (radius * (1 + Math.cos((360 - (360 * ((runningData + fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
-          endY = (radius * (1 - Math.sin((360 - (360 * ((runningData + fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
+          endX = (radius * (1 + Math.cos((360 - (360 * ((runningData + fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
+          endY = (radius * (1 - Math.sin((360 - (360 * ((runningData + fillValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
         } else {
-          endX = (radius * (1 + Math.cos((360 - (360 * ((runningData + mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
-          endY = (radius * (1 - Math.sin((360 - (360 * ((runningData + mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2);
+          endX = (radius * (1 + Math.cos((360 - (360 * ((runningData + mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
+          endY = (radius * (1 - Math.sin((360 - (360 * ((runningData + mainIndexValue) / maxValue)) / 180) * Math.PI))) + (thickness / 2)
         }
-  
-        //console.log('startX :- ', startX, 'startY :- ', startY);
-        //console.log('endX :- ', endX, 'endY :- ', endY);
-  
-        circlePath = this.circlePath(halfSize, halfSize, radius, startAngle, endAngle, [startX, startY], [endX, endY]);
-        
-        paths_data.push({
+
+        circlePath = this.circlePath(halfSize, halfSize, radius, startAngle, endAngle, [startX, startY], [endX, endY])
+
+        pathsData.push({
           path: circlePath,
-          fillColor: one_data.fillColor || fillColor,
-        });
-  
+          fillColor: oneData.fillColor || fillColor
+        })
+
         if (index === mainIndex) {
-          texts_list = one_data.texts || [];
+          textsList = oneData.texts || []
         }
-  
-        startAngle = endAngle;
-      });
+
+        startAngle = endAngle
+      })
     }
 
-    let modifiedDotsContainerStyle = styles.dotsContainer;
+    let modifiedDotsContainerStyle = styles.dotsContainer
     if (dotsPositionBottom) {
-      modifiedDotsContainerStyle = [styles.dotsContainer, { bottom: dotsPositionBottom }];
+      modifiedDotsContainerStyle = [styles.dotsContainer, { bottom: dotsPositionBottom }]
     }
 
-    const dotsSpanElements = [];
+    const dotsSpanElements = []
 
     if (data) {
       for (let i = 0; i < (totalDots || data.length); i++) {
-        let dotStyle = {};
-  
+        let dotStyle = {}
+
         if (i === index) {
-          dotStyle = [styles.dot, {backgroundColor: fillColor, borderColor: fillColor}];
+          dotStyle = [styles.dot, { backgroundColor: fillColor, borderColor: fillColor }]
         } else {
-          dotStyle = [styles.dot, {backgroundColor: backgroundColor, borderColor: backgroundColor}];
+          dotStyle = [styles.dot, { backgroundColor: backgroundColor, borderColor: backgroundColor }]
         }
-        dotsSpanElements.push(<View key={i} style={dotStyle}></View>);
+        dotsSpanElements.push(<View key={i} style={dotStyle} />)
       }
     }
 
@@ -267,11 +270,11 @@ export default class CircularProgress extends React.PureComponent {
               />
             )}
             {
-              paths_data.map((path_data, path_index) => (
+              pathsData.map((pathData, pathIndex) => (
                 <Shape
-                  key={path_index}
-                  d={path_data.path}
-                  stroke={path_data.fillColor}
+                  key={pathIndex}
+                  d={pathData.path}
+                  stroke={pathData.fillColor}
                   strokeWidth={thickness}
                   strokeCap={'butt'}
                 />
@@ -280,18 +283,16 @@ export default class CircularProgress extends React.PureComponent {
           </Group>
         </Surface>
         <View style={styles.innerContainer}>
-          {centerTextEvaluateFunction(staticCenterText !== undefined ? staticCenterText : fillValue, texts_list, fillColor, childrenStyle || {}, valuePrefix)}
+          {centerTextEvaluateFunction(staticCenterText !== undefined ? staticCenterText : fillValue, textsList, fillColor, childrenStyle || {}, valuePrefix)}
         </View>
         {
           showSliderDots
-          ?
-            <View style={modifiedDotsContainerStyle}>
+            ? <View style={modifiedDotsContainerStyle}>
               {dotsSpanElements}
             </View>
-          :
-            null
+            : null
         }
       </View>
-    );
+    )
   }
 }

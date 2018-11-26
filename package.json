@@ -6,6 +6,20 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach"
+    ],
+    "ignore": [
+      "node_modules/*"
+    ]
+  },
   "dependencies": {
     "react-native-dash": "0.0.9",
     "react-native-indicators": "^0.13.0",

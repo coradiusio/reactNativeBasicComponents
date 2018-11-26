@@ -1,20 +1,16 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
 import {
   Button
-} from 'react-native-material-ui';
-
-import {
-  colors
-} from '../constants';
+} from 'react-native-material-ui'
 
 export default class ButtonComponent extends React.PureComponent {
-  render() {
+  render () {
     return (
       <View style={[styles.buttonContainer, this.props.buttonContainerStyle]}>
         <Button
@@ -23,12 +19,12 @@ export default class ButtonComponent extends React.PureComponent {
           {...this.props}
         />
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   buttonContainer: {
     padding: 16
-  },
-});
+  }
+})

@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
 export default class Bar extends React.PureComponent {
-  render() {
+  render () {
     return (
       <View style={[styles.container, this.props.style]} elevation={this.props.elevation || 1} />
-    );
+    )
   }
 }
 
@@ -24,5 +24,4 @@ const styles = StyleSheet.create({
     height: 12,
     marginRight: 8
   }
-});
-
+})

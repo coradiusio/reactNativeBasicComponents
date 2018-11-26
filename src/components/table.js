@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet
-} from 'react-native';
+} from 'react-native'
 
 export default class Table extends React.PureComponent {
-  render() {
+  render () {
     const {
       containerStyle,
       elevation,
@@ -20,33 +20,33 @@ export default class Table extends React.PureComponent {
       footerData,
       renderFooter,
       extraData
-    } = this.props;
+    } = this.props
 
     return (
       <View style={[styles.container, containerStyle]} elevation={elevation || 0}>
         <View style={[styles.header, headerStyle]}>
           {
-            typeof renderHeader === 'function' && headerData instanceof Array && headerData.map((item, index) => 
+            typeof renderHeader === 'function' && headerData instanceof Array && headerData.map((item, index) =>
               renderHeader(item, index)
             )
           }
         </View>
         <View style={[styles.body, bodyStyle]}>
           {
-            typeof renderBody === 'function' && bodyData instanceof Array && bodyData.map((item, index) => 
+            typeof renderBody === 'function' && bodyData instanceof Array && bodyData.map((item, index) =>
               renderBody(item, index, extraData)
             )
           }
         </View>
         <View style={[styles.footer, footerStyle]}>
           {
-            typeof renderFooter === 'function' && footerData instanceof Array && footerData.map((item, index) => 
+            typeof renderFooter === 'function' && footerData instanceof Array && footerData.map((item, index) =>
               renderFooter(item, index)
             )
           }
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: 'row'
   }
-});
+})

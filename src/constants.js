@@ -1,7 +1,3 @@
-import {
-  Color
-} from '../index';
-
 export const colors = {
   primaryYellow: '#FFEB3B',
   secondaryYellow: '#FFFC72',
