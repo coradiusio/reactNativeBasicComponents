@@ -16,7 +16,16 @@ export default class RadioChoices extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      value: props.initial || ''
+      value: props.initial || '',
+      pointerEvents: 'auto'
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.pointerEvents) {
+      this.setState({
+        pointerEvents: this.props.pointerEvents
+      })
     }
   }
 
@@ -27,13 +36,28 @@ export default class RadioChoices extends React.PureComponent {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.pointerEvents && nextProps.pointerEvents !== this.state.pointerEvents) {
+      this.setState({
+        pointerEvents: nextProps.pointerEvents
+      })
+    }
+  }
+
   render () {
     const {
       choices
     } = this.props
 
     return (
-      <View style={[styles.buttonsContainer, this.props.buttonsContainerStyle]}>
+      <View
+        style={[
+          styles.buttonsContainer,
+          this.props.buttonsContainerStyle,
+          this.state.pointerEvents === 'none' ? styles.dim : null
+        ]}
+        pointerEvents={this.state.pointerEvents}
+      >
         {
           choices && choices.map((choice, index) => (
             <TouchableOpacity
@@ -64,5 +88,9 @@ const styles = StyleSheet.create({
   },
   lightText: {
     color: colors.white
+  },
+  dim: {
+    opacity: 0.5
   }
 })
+
