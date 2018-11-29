@@ -16,15 +16,21 @@ export default class RadioChoices extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      value: props.initial || '',
+      value: '',
       pointerEvents: 'auto'
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.props.pointerEvents) {
       this.setState({
         pointerEvents: this.props.pointerEvents
+      })
+    }
+
+    if (this.props.value) {
+      this.setState({
+        value: this.props.value
       })
     }
   }
@@ -36,10 +42,16 @@ export default class RadioChoices extends React.PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.pointerEvents && nextProps.pointerEvents !== this.state.pointerEvents) {
       this.setState({
         pointerEvents: nextProps.pointerEvents
+      })
+    }
+
+    if (nextProps.value) {
+      this.setState({
+        value: nextProps.value
       })
     }
   }
