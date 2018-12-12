@@ -21,8 +21,6 @@
     ]
   },
   "dependencies": {
-    "react": "16.6.1",
-    "react-native": "0.57.7",
     "react-native-dash": "0.0.9",
     "react-native-indicators": "^0.13.0",
     "react-native-material-color": "^1.0.15",
