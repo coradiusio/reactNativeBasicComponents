@@ -27,6 +27,12 @@ export default class RadioChoices extends React.PureComponent {
         pointerEvents: this.props.pointerEvents
       })
     }
+
+    if (this.props.value) {
+      this.setState({
+        pointerEvents: this.props.value
+      })
+    }
   }
 
   handleButton (label, value) {
@@ -40,6 +46,12 @@ export default class RadioChoices extends React.PureComponent {
     if (nextProps.pointerEvents && nextProps.pointerEvents !== this.state.pointerEvents) {
       this.setState({
         pointerEvents: nextProps.pointerEvents
+      })
+    }
+
+    if (nextProps.value && nextProps.value !== this.state.value) {
+      this.setState({
+        value: nextProps.value
       })
     }
   }
