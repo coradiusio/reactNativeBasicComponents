@@ -65,8 +65,7 @@ export default class RadioChoices extends React.PureComponent {
       <View
         style={[
           styles.buttonsContainer,
-          this.props.buttonsContainerStyle,
-          this.state.pointerEvents === 'none' ? styles.dim : null
+          this.props.buttonsContainerStyle
         ]}
         pointerEvents={this.state.pointerEvents}
       >
@@ -79,7 +78,7 @@ export default class RadioChoices extends React.PureComponent {
               <EllipticalButton
                 label={choice.label}
                 style={[this.props.containerStyle, this.state.value === choice.value ? [styles.fillContainer, this.props.fillContainerStyle] : null]}
-                textStyle={this.state.value === choice.value ? [styles.lightText, this.props.lightTextStyle] : null}
+                textStyle={[styles.font, this.state.value === choice.value ? styles.lightText : null, this.props.lightTextStyle]}
               />
             </TouchableOpacity>
           ))
@@ -98,11 +97,11 @@ const styles = StyleSheet.create({
   fillContainer: {
     backgroundColor: colors.green
   },
+  font: {
+    fontSize: 14
+  },
   lightText: {
     color: colors.white
-  },
-  dim: {
-    opacity: 0.5
   }
 })
 
