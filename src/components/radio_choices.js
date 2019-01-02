@@ -92,7 +92,11 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: 'row',
     marginTop: 16,
-    marginBottom: 16
+    marginBottom: 16,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 9,
+    paddingBottom: 9
   },
   fillContainer: {
     backgroundColor: colors.green
