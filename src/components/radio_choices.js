@@ -96,10 +96,6 @@ const styles = StyleSheet.create({
   },
   fillContainer: {
     backgroundColor: colors.green,
-    paddingLeft: 12,
-    paddingRight: 12,
-    paddingTop: 9,
-    paddingBottom: 9
   },
   font: {
     fontSize: 14
