@@ -78,7 +78,7 @@ export default class RadioChoices extends React.PureComponent {
               <EllipticalButton
                 label={choice.label}
                 style={[this.props.containerStyle, this.state.value === choice.value ? [styles.fillContainer, this.props.fillContainerStyle] : null]}
-                textStyle={[styles.font, this.state.value === choice.value ? styles.lightText : null, this.props.lightTextStyle]}
+                textStyle={[styles.font, this.state.value === choice.value ? styles.lightText : null, this.props.textStyle, this.props.lightTextStyle]}
               />
             </TouchableOpacity>
           ))
