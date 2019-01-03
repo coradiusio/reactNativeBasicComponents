@@ -1,17 +1,5 @@
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
-import {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
-  WaveIndicator
-} from 'react-native-indicators'
-
 import Color from 'react-native-material-color'
 
 import AnimatedCircularProgress from './components/animated_circular_progress'
@@ -40,16 +28,6 @@ import Typography from './components/typography'
 import VerticalStepper from './components/vertical_stepper'
 
 export {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
-  WaveIndicator,
-
   Color,
   DateTimePicker,
 

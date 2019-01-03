@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "react-native-dash": "0.0.9",
-    "react-native-indicators": "^0.13.0",
     "react-native-material-color": "^1.0.15",
     "react-native-material-kit": "^0.5.1",
     "react-native-material-ui": "^1.30.1",
