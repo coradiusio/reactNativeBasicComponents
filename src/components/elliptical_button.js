@@ -32,14 +32,15 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     borderWidth: 2,
     borderColor: colors.green,
-    padding: 4,
-    paddingLeft: 16,
-    paddingRight: 16,
+    padding: 9,
+    paddingLeft: 12,
+    paddingRight: 12,
     minWidth: 70,
     marginRight: 16
   },
   textStyle: {
     color: colors.blueG80,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 14
   }
 })
