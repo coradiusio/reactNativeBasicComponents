@@ -93,13 +93,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 16,
     marginBottom: 16,
+  },
+  fillContainer: {
+    backgroundColor: colors.green,
     paddingLeft: 12,
     paddingRight: 12,
     paddingTop: 9,
     paddingBottom: 9
-  },
-  fillContainer: {
-    backgroundColor: colors.green
   },
   font: {
     fontSize: 14
