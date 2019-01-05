@@ -1,47 +1,47 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
 export default class RadioFormComponent extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       value: this.props.initial || ''
     }
-    this.onPress = this.onPress.bind(this);
+    this.onPress = this.onPress.bind(this)
   }
 
-  onPress(value) {
-    this.setState({ value });
+  onPress (value) {
+    this.setState({ value })
   }
-  
-  render() {
+
+  render () {
     const {
-      radio_props,
+      radioProps,
       buttonColor,
       buttonSize,
       buttonOuterSize,
       borderWidth,
       radioWrapStyle
-    } = this.props;
+    } = this.props
 
     return (
       <View>
         <RadioForm
           formHorizontal={false}
-          animation={true}
+          animation
         >
-          {radio_props && radio_props.map((obj, i) => (
-            <RadioButton labelHorizontal={true} key={i} style={[styles.radioStyle, radioWrapStyle]}>
+          {radioProps instanceof Array && radioProps.map((obj, i) => (
+            <RadioButton labelHorizontal key={i} style={[styles.radioStyle, radioWrapStyle]}>
               <RadioButtonInput
                 obj={obj}
                 index={i}
@@ -56,7 +56,7 @@ export default class RadioFormComponent extends React.PureComponent {
               <RadioButtonLabel
                 obj={obj}
                 index={i}
-                labelHorizontal={true}
+                labelHorizontal
                 onPress={this.onPress}
                 labelStyle={styles.labelStyle}
               />
@@ -64,7 +64,7 @@ export default class RadioFormComponent extends React.PureComponent {
           ))}
         </RadioForm>
       </View>
-    );
+    )
   }
 }
 
@@ -77,4 +77,4 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 8
   }
-});
+})

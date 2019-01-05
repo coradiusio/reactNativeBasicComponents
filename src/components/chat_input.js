@@ -1,45 +1,45 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet,
   TouchableOpacity
-} from 'react-native';
+} from 'react-native'
 
-import TextInput from './text_input';
-import Icon from './icon';
-import Loader from './loader';
+import TextInput from './text_input'
+import Icon from './icon'
+import Loader from './loader'
 
 class ChatInput extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      inputText: '',
+      inputText: ''
     }
 
-    this.setInputText = this.setInputText.bind(this);
+    this.setInputText = this.setInputText.bind(this)
   }
 
-  componentDidMount() {
-    this.setInputText(this.props.inputText);
+  componentDidMount () {
+    this.setInputText(this.props.inputText)
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setInputText(nextProps.inputText);
+  componentWillReceiveProps (nextProps) {
+    this.setInputText(nextProps.inputText)
   }
 
-  setInputText(text) {
+  setInputText (text) {
     if (text !== undefined) {
-      this.setState({ inputText: text });
+      this.setState({ inputText: text })
     }
   }
-  
-  render() {
+
+  render () {
     const {
       sendIcon,
       onChange,
-      showLoader,
-    } = this.props;
+      showLoader
+    } = this.props
 
     return (
       <View
@@ -50,9 +50,9 @@ class ChatInput extends React.PureComponent {
           <View style={styles.flexView}>
             <TextInput
               onChangeText={(inputText) => {
-                this.setInputText(inputText);
+                this.setInputText(inputText)
                 if (onChange) {
-                  onChange(inputText);
+                  onChange(inputText)
                 }
               }}
               placeholder='Enter Your Message'
@@ -62,8 +62,7 @@ class ChatInput extends React.PureComponent {
           </View>
           {
             typeof sendIcon === 'object'
-            ?
-              <TouchableOpacity
+              ? <TouchableOpacity
                 style={styles.iconContainerStyle}
                 onPress={this.props.onSendIconPress}
               >
@@ -74,23 +73,20 @@ class ChatInput extends React.PureComponent {
                   size={sendIcon.size}
                 />
               </TouchableOpacity>
-            :
-              null
+              : null
           }
           {
             showLoader
-            ?
-              <View
+              ? <View
                 style={styles.iconContainerStyle}
               >
                 <Loader size={this.props.loaderSize} color={this.props.loaderColor} />
               </View>
-            :
-              null
+              : null
           }
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -107,20 +103,20 @@ const styles = StyleSheet.create({
       height: 3
     },
     shadowRadius: 5,
-    shadowOpacity: 1.0,
+    shadowOpacity: 1.0
   },
   innerContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   flexView: {
-    flex: 1,
+    flex: 1
   },
   iconContainerStyle: {
     minWidth: 40,
     alignItems: 'flex-end',
-    justifyContent: 'center',
-  },
-});
+    justifyContent: 'center'
+  }
+})
 
-export default ChatInput;
+export default ChatInput

@@ -1,46 +1,46 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Animated,
   AppState,
   Easing
-} from 'react-native';
+} from 'react-native'
 
-import CircularProgress from './circular_progress';
+import CircularProgress from './circular_progress'
 
-const AnimatedProgress = Animated.createAnimatedComponent(CircularProgress);
+const AnimatedProgress = Animated.createAnimatedComponent(CircularProgress)
 
 export default class AnimatedCircularProgress extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       index: 0,
       appState: AppState.currentState,
       chartFillAnimation: new Animated.Value(0),
-      data: [],
+      data: []
     }
   }
 
-  componentDidMount() {
-    this.startAnimation();
-    AppState.addEventListener('change', this.handleAppStateChange);
+  componentDidMount () {
+    this.startAnimation()
+    AppState.addEventListener('change', this.handleAppStateChange)
   }
 
   startAnimation = () => {
     if (this.props.data && this.props.data.length > 0) {
-      this.props.data.slice(0,1).map(item => {
-        const { data } = this.state;
-        data[0] = item;
-        this.setState({ data: data });
-        this.animateFill(item.value, this.props.animationDuration, this.onAnimationComplete);
-      });
+      this.props.data.slice(0, 1).map(item => {
+        const { data } = this.state
+        data[0] = item
+        this.setState({ data: data })
+        this.animateFill(item.value, this.props.animationDuration, this.onAnimationComplete)
+      })
     } else if (this.props.fillValue) {
-      this.animateFill(this.props.fillValue, this.props.animationDuration);
+      this.animateFill(this.props.fillValue, this.props.animationDuration)
     }
   }
 
-  componentWillUnmount() {
-    AppState.removeEventListener('change', this.handleAppStateChange);
+  componentWillUnmount () {
+    AppState.removeEventListener('change', this.handleAppStateChange)
   }
 
   handleAppStateChange = nextAppState => {
@@ -51,46 +51,44 @@ export default class AnimatedCircularProgress extends React.PureComponent {
       this.setState({
         chartFillAnimation: new Animated.Value(0),
         data: [],
-        index: 0,
-      });
-      this.startAnimation();
+        index: 0
+      })
+      this.startAnimation()
     }
-    this.setState({ appState: nextAppState });
+    this.setState({ appState: nextAppState })
   }
 
   onAnimationComplete = () => {
-    const { index } = this.state;
-    let newIndex = index + 1;
+    const { index } = this.state
+    let newIndex = index + 1
 
     if (this.props.data && this.props.data.length > 1) {
       if (newIndex === this.props.data.length - 1) {
-        const { data } = this.state;
-        data[newIndex] = this.props.data[newIndex];
-        this.setState({ data, index: newIndex });
-        this.animateFill(this.props.data[newIndex].value, this.props.animationDuration);
+        const { data } = this.state
+        data[newIndex] = this.props.data[newIndex]
+        this.setState({ data, index: newIndex })
+        this.animateFill(this.props.data[newIndex].value, this.props.animationDuration)
       } else {
-        const { data } = this.state;
-        data[newIndex] = this.props.data[newIndex];
-        this.setState({ data, index: newIndex });
-        this.animateFill(this.props.data[newIndex].value, this.props.animationDuration, this.onAnimationComplete);
+        const { data } = this.state
+        data[newIndex] = this.props.data[newIndex]
+        this.setState({ data, index: newIndex })
+        this.animateFill(this.props.data[newIndex].value, this.props.animationDuration, this.onAnimationComplete)
       }
     }
-  } 
+  }
 
-  animateFill(fillValue, duration, onAnimationComplete) {
-    const { tension, friction } = this.props;
-
+  animateFill (fillValue, duration, onAnimationComplete) {
     Animated.timing(
       this.state.chartFillAnimation,
       {
         toValue: fillValue,
         easing: Easing.linear,
-        duration: duration,
+        duration: duration
       }
-    ).start(onAnimationComplete);
+    ).start(onAnimationComplete)
   }
 
-  render() {
+  render () {
     const {
       size,
       thickness,
@@ -105,8 +103,8 @@ export default class AnimatedCircularProgress extends React.PureComponent {
       staticCenterText,
       valuePrefix,
       showOnlyOneFillColor,
-      texts,
-    } = this.props;
+      texts
+    } = this.props
 
     return (
       <AnimatedProgress
@@ -131,10 +129,10 @@ export default class AnimatedCircularProgress extends React.PureComponent {
         useNativeDriver
         doAnimation
       />
-    );
+    )
   }
 }
 
 AnimatedCircularProgress.defaultProps = {
-  animationDuration: 2000,
-};
+  animationDuration: 2000
+}
