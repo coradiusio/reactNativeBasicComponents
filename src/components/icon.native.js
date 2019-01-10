@@ -1,5 +1,6 @@
 import React from 'react'
 
+import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 import ZocialIcon from 'react-native-vector-icons/Zocial'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -9,6 +10,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons'
 import EvilIcon from 'react-native-vector-icons/EvilIcons'
 
 const AllIcons = {
+  'ant-design': AntDesignIcon,
   'font-awesome': FAIcon,
   'entypo': EntypoIcon,
   'material-community': MaterialCommunityIcon,

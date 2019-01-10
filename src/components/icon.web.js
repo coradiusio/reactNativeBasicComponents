@@ -1,5 +1,6 @@
 import React from 'react'
 
+import AntDesignIcon from 'react-native-vector-icons/dist/AntDesign'
 import ZocialIcon from 'react-native-vector-icons/dist/Zocial'
 import MaterialIcon from 'react-native-vector-icons/dist/MaterialIcons'
 import MaterialCommunityIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons'
@@ -10,6 +11,14 @@ import EvilIcon from 'react-native-vector-icons/dist/EvilIcons'
 
 const style = document.createElement('style');
 style.type = 'text/css';
+style.appendChild(
+	document.createTextNode(
+		`@font-face {
+			src: url(${require(`react-native-vector-icons/Fonts/AntDesign.ttf`)});
+			font-family: AntDesign;
+		}`
+	)
+)
 style.appendChild(
 	document.createTextNode(
 		`@font-face {
@@ -70,6 +79,7 @@ style.appendChild(
 document.head.appendChild(style)
 
 const AllIcons = {
+  'ant-design': AntDesignIcon,
   'font-awesome': FAIcon,
   'entypo': EntypoIcon,
   'material-community': MaterialCommunityIcon,
