@@ -1,5 +1,3 @@
-import DateTimePicker from 'react-native-modal-datetime-picker'
-
 import Color from 'react-native-material-color'
 
 import AnimatedCircularProgress from './components/animated_circular_progress'
@@ -29,7 +27,6 @@ import VerticalStepper from './components/vertical_stepper'
 
 export {
   Color,
-  DateTimePicker,
 
   AnimatedCircularProgress,
   Bar,
