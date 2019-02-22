@@ -17,6 +17,7 @@ export default class Title extends React.PureComponent {
         style={[styles.title, this.props.style]}
         type={this.props.type}
         text={this.props.text}
+        numberOfLines={this.props.numberOfLines}
       />
     )
   }

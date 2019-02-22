@@ -19,6 +19,7 @@ export default class Typography extends React.PureComponent {
           type === 'overline' ? { fontSize: 10 } : null,
           this.props.style
         ]}
+        numberOfLines={this.props.numberOfLines}
       >
         {this.props.text}
       </Text>
