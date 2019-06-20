@@ -1,24 +1,24 @@
-import React from 'react';
+import React from 'react'
 
 import {
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
-import Typography from './typography';
+import Typography from './typography'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
 export default class SubTitle extends React.PureComponent {
-  render() {
+  render () {
     return (
       <Typography
         style={[styles.sub_title, this.props.style]}
         type={this.props.type}
         text={this.props.text}
       />
-    );
+    )
   }
 }
 
@@ -30,5 +30,4 @@ const styles = StyleSheet.create({
   sub_title: {
     color: colors.blueG60
   }
-});
-
+})

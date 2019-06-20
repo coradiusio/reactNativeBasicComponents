@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
 export default class Loader extends React.PureComponent {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <ActivityIndicator
@@ -20,7 +20,7 @@ export default class Loader extends React.PureComponent {
           animating
         />
       </View>
-    );
+    )
   }
 }
 
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-});
+})

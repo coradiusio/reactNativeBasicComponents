@@ -1,27 +1,27 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
-import Dash from 'react-native-dash';
+import Dash from 'react-native-dash'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
-import Icon from './icon';
+import Icon from './icon'
 
 export default class VerticalStepper extends React.PureComponent {
-  render() {
+  render () {
     const {
       data,
       step,
       renderComponent
-    } = this.props;
+    } = this.props
 
-    const stepsElement = [];
+    const stepsElement = []
 
     data instanceof Array && data.map((item, index) => {
       if (index !== data.length - 1) {
@@ -34,13 +34,13 @@ export default class VerticalStepper extends React.PureComponent {
             style={styles.dashStyle}
             dashColor={index < step ? colors.green : colors.blueG20}
           />
-        );
+        )
       } else {
         stepsElement.push(
           <Icon key={index} name='check-circle' type='material-community' size={20} color={index < step ? colors.green : colors.blueG20} />
         )
       }
-    });
+    })
 
     return (
       <View style={styles.container}>
@@ -55,13 +55,13 @@ export default class VerticalStepper extends React.PureComponent {
           }
         </View>
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   circleContainer: {
     marginRight: 16,
@@ -70,12 +70,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   dashStyle: {
-    width:1,
+    width: 1,
     height: 80,
-    flexDirection:'column'
+    flexDirection: 'column'
   },
   tileContainer: {
     justifyContent: 'flex-start'
   }
-});
-
+})

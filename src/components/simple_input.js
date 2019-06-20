@@ -1,39 +1,39 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet
-} from 'react-native';
+} from 'react-native'
 
 import {
   MKTextField,
   MKColor
-} from 'react-native-material-kit';
+} from 'react-native-material-kit'
 
-import Icon from './icon';
+import Icon from './icon'
 import {
   colors
-} from '../constants';
+} from '../constants'
 
 export default class SimpleInput extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      value: '',
+      value: ''
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.props.defaultValue) {
-      this.setState({ value: this.props.defaultValue });
+      this.setState({ value: this.props.defaultValue })
     }
   }
 
-  _handleStateValue(state, value) {
-    this.setState({ [state]: value });
+  _handleStateValue (state, value) {
+    this.setState({ [state]: value })
   }
 
-  render() {
+  render () {
     const {
       placeholder,
       leftIconName,
@@ -41,8 +41,8 @@ export default class SimpleInput extends React.PureComponent {
       leftIconSize,
       leftIconColor,
       leftIconStyle,
-      inputStyle,
-    } = this.props;
+      inputStyle
+    } = this.props
 
     return (
       <View style={styles.container}>
@@ -57,20 +57,20 @@ export default class SimpleInput extends React.PureComponent {
         <MKTextField
           tintColor={MKColor.Silver}
           value={this.state.value}
-          textInputStyle={{color: MKColor.Grey}}
+          textInputStyle={{ color: MKColor.Grey }}
           placeholder={placeholder || ''}
           style={[styles.textfield, inputStyle]}
           onTextChange={(value) => this._handleStateValue('value', value)}
           keyboardType='numeric'
         />
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom:10,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'center'
@@ -83,6 +83,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   labelTextStyle: {
-    color: colors.green,
+    color: colors.green
   }
-});
+})

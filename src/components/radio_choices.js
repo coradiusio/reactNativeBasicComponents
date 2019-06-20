@@ -1,39 +1,74 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet,
   TouchableOpacity
-} from 'react-native';
+} from 'react-native'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
-import EllipticalButton from './elliptical_button';
+import EllipticalButton from './elliptical_button'
 
 export default class RadioChoices extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      value: props.initial || ''
+      value: props.initial || '',
+      pointerEvents: 'auto'
     }
   }
 
-  handleButton(label, value) {
-    this.setState({ value });
+  componentDidMount() {
+    if (this.props.pointerEvents) {
+      this.setState({
+        pointerEvents: this.props.pointerEvents
+      })
+    }
+
+    if (this.props.value) {
+      this.setState({
+        pointerEvents: this.props.value
+      })
+    }
+  }
+
+  handleButton (label, value) {
+    this.setState({ value })
     if (typeof this.props.onChange === 'function') {
-      this.props.onChange({ label, value});
+      this.props.onChange({ label, value })
     }
   }
 
-  render() {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.pointerEvents && nextProps.pointerEvents !== this.state.pointerEvents) {
+      this.setState({
+        pointerEvents: nextProps.pointerEvents
+      })
+    }
+
+    if (nextProps.value && nextProps.value !== this.state.value) {
+      this.setState({
+        value: nextProps.value
+      })
+    }
+  }
+
+  render () {
     const {
       choices
-    } = this.props;
+    } = this.props
 
     return (
-      <View style={[styles.buttonsContainer, this.props.buttonsContainerStyle]}>
+      <View
+        style={[
+          styles.buttonsContainer,
+          this.props.buttonsContainerStyle
+        ]}
+        pointerEvents={this.state.pointerEvents}
+      >
         {
           choices && choices.map((choice, index) => (
             <TouchableOpacity
@@ -43,13 +78,13 @@ export default class RadioChoices extends React.PureComponent {
               <EllipticalButton
                 label={choice.label}
                 style={[this.props.containerStyle, this.state.value === choice.value ? [styles.fillContainer, this.props.fillContainerStyle] : null]}
-                textStyle={this.state.value === choice.value ? [styles.lightText, this.props.lightTextStyle] : null}
+                textStyle={[styles.font, this.state.value === choice.value ? styles.lightText : null, this.props.textStyle, this.props.lightTextStyle]}
               />
             </TouchableOpacity>
           ))
         }
       </View>
-    );
+    )
   }
 }
 
@@ -57,13 +92,16 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: 'row',
     marginTop: 16,
-    marginBottom: 16
+    marginBottom: 16,
   },
   fillContainer: {
     backgroundColor: colors.green,
   },
+  font: {
+    fontSize: 14
+  },
   lightText: {
-    color: colors.white,
+    color: colors.white
   }
-});
+})
 

@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet
-} from 'react-native';
+} from 'react-native'
 
 export default class Separator extends React.PureComponent {
-  render() {
+  render () {
     return (
       <View style={[styles.container, this.props.style]}>
         {this.props.children}
       </View>
-    );
+    )
   }
 }
 
@@ -20,5 +20,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-});
+  }
+})
