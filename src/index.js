@@ -24,6 +24,7 @@ import TilesListItem from './components/tiles_list_item'
 import Title from './components/title'
 import Typography from './components/typography'
 import VerticalStepper from './components/vertical_stepper'
+import SmallCard from './components/icon_small_card'
 
 export {
   Color,
@@ -51,5 +52,6 @@ export {
   TilesListItem,
   Title,
   Typography,
-  VerticalStepper
+  VerticalStepper,
+  SmallCard
 }
