@@ -25,6 +25,9 @@ import Title from './components/title'
 import Typography from './components/typography'
 import VerticalStepper from './components/vertical_stepper'
 import SmallCard from './components/icon_small_card'
+import ImageFloatCard from './components/image_float_card'
+import TabFloatCard from './components/tab_float_card'
+import TitleFloatCard from './components/title_float_card'
 
 export {
   Color,
@@ -53,5 +56,8 @@ export {
   Title,
   Typography,
   VerticalStepper,
-  SmallCard
+  SmallCard,
+  ImageFloatCard,
+  TabFloatCard,
+  TitleFloatCard
 }
