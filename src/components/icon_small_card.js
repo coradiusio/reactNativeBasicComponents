@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Text, View, StyleSheet, PixelRatio } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import Icon from './icon'
 
 export default class SmallCard extends React.PureComponent {
@@ -8,9 +8,9 @@ export default class SmallCard extends React.PureComponent {
     const { iconType, title, content, footer, style } = this.props
     return (
       <View style={style}>
-        <Text style={styles.titleStyler}><Icon name={iconType} />{` ${title}`}</Text>
+        <Text style={styles.titleStyler}><Icon type={'ant-design'} name={iconType} />{` ${title}`}</Text>
         <Text style={styles.contentStyler}>{content}</Text>
-        <Text style={styles.footerStyler}><Icon name={'sync'} style={styles.syncIconStyler} />{footer}</Text>
+        <Text style={{ textAlign: 'center', marginTop: 30, fontSize: 15 }}><Icon type={'ant-design'} name={'sync'} style={{ fontSize: 18 }} />{footer}</Text>
       </View>
     )
   }
@@ -18,22 +18,22 @@ export default class SmallCard extends React.PureComponent {
 
 const styles = StyleSheet.create({
   contentStyler: {
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(29),
+    fontSize: 29,
     fontWeight: '500',
     textAlign: 'center',
-    paddingTop: PixelRatio.getPixelSizeForLayoutSize(10)
+    paddingTop: 10
   },
   titleStyler: {
     textAlign: 'center',
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(18),
-    marginTop: PixelRatio.getPixelSizeForLayoutSize(10)
+    fontSize: 18,
+    marginTop: 10
   },
   footerStyler: {
     textAlign: 'center',
-    marginTop: PixelRatio.getPixelSizeForLayoutSize(30),
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(15)
+    marginTop: 30,
+    fontSize: 15
   },
   syncIconStyler: {
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(18)
+    fontSize: 18
   }
 })
