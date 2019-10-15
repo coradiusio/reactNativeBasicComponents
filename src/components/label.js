@@ -1,29 +1,29 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
-import SVGImage from 'react-native-remote-svg';
+import SVGImage from 'react-native-remote-svg'
 
-import Typography from './typography';
+import Typography from './typography'
 
 export default class Label extends React.PureComponent {
-  render() {
+  render () {
     const {
       icon,
       type,
       iconPosition,
       imageURL,
       imageWidth,
-      imageHeight,
-    } = this.props;
+      imageHeight
+    } = this.props
 
-    let element = [];
+    let element = []
 
-    let iconElement;
-    
+    let iconElement
+
     const textElement = (
       <Typography
         style={[styles.heading, this.props.textStyle]}
@@ -31,46 +31,46 @@ export default class Label extends React.PureComponent {
         text={this.props.text}
         key={1}
       />
-    );
+    )
 
-    element.push(textElement);
+    element.push(textElement)
 
     if (icon || imageURL) {
       iconElement = (
         <View style={styles.iconImageContainer} key={2}>
           {
-            icon || 
+            icon ||
             <View style={[styles.imageContainerStyle, { width: imageWidth || 40, height: imageHeight || 40 }]}>
               {
-                icon || 
+                icon ||
                 <SVGImage
                   style={[styles.imageStyle, { width: imageWidth || 40, height: imageHeight || 40 }]}
-                  source={{uri:imageURL}}
+                  source={{ uri: imageURL }}
                 />
               }
             </View>
           }
         </View>
-      );
+      )
       if (iconPosition === 'right') {
-        element.push(iconElement);
+        element.push(iconElement)
       } else {
-        element.unshift(iconElement);
+        element.unshift(iconElement)
       }
     }
-    
+
     return (
       <View style={[styles.container, this.props.style]}>
         {element}
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   iconImageContainer: {
     alignItems: 'center',
@@ -83,10 +83,9 @@ const styles = StyleSheet.create({
     height: 40
   },
   imageStyle: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   heading: {
-    marginLeft: 4,
+    marginLeft: 4
   }
-});
-
+})

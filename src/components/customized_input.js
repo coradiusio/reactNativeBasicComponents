@@ -1,48 +1,48 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet
-} from 'react-native';
+} from 'react-native'
 
 import {
   MKTextField,
   MKColor
-} from 'react-native-material-kit';
+} from 'react-native-material-kit'
 
-import Icon from './icon';
-import Label from './label';
+import Icon from './icon'
+import Label from './label'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
 export default class CustomizedInput extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       value: '',
       hideInputField: false,
       inputBlurred: true,
-      inputFocused: false,
+      inputFocused: false
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.props.defaultValue) {
-      this.setState({ value: this.props.defaultValue });
+      this.setState({ value: this.props.defaultValue })
     }
   }
 
-  _handleStateValue(state, value) {
-    this.setState({ [state]: value });
+  _handleStateValue (state, value) {
+    this.setState({ [state]: value })
   }
 
-  _handleMultipleStateValue(objects) {
-    this.setState(objects);
+  _handleMultipleStateValue (objects) {
+    this.setState(objects)
   }
 
-  render() {
+  render () {
     const {
       placeholder,
       leftIconName,
@@ -62,7 +62,7 @@ export default class CustomizedInput extends React.PureComponent {
       rightSaveIconSize,
       rightSaveIconColor,
       rightSaveIconStyle
-    } = this.props;
+    } = this.props
 
     return (
       <View style={styles.container}>
@@ -76,29 +76,26 @@ export default class CustomizedInput extends React.PureComponent {
         </View>
         {
           !this.state.hideInputField
-          ?
-            <MKTextField
+            ? <MKTextField
               tintColor={MKColor.Silver}
               value={this.state.value}
-              textInputStyle={{color: MKColor.Grey}}
+              textInputStyle={{ color: MKColor.Grey }}
               placeholder={placeholder || ''}
               style={[styles.textfield, inputStyle]}
               floatingLabelEnabled
-              onFocus={() => this._handleMultipleStateValue({inputFocused: true, inputBlurred: false})}
-              onBlur={() => this._handleMultipleStateValue({inputFocused: false, inputBlurred: true})}
+              onFocus={() => this._handleMultipleStateValue({ inputFocused: true, inputBlurred: false })}
+              onBlur={() => this._handleMultipleStateValue({ inputFocused: false, inputBlurred: true })}
               onTextChange={(value) => this._handleStateValue('value', value)}
               keyboardType='numeric'
             />
-          :
-            <Label
+            : <Label
               text={this.state.value}
               textStyle={[styles.labelTextStyle, labelStyle]}
             />
         }
         {
           !this.state.hideInputField && this.state.inputFocused
-          ?
-            <View style={[styles.rightIconContainer, rightSaveIconStyle]}>
+            ? <View style={[styles.rightIconContainer, rightSaveIconStyle]}>
               <Icon
                 name={rightSaveIconName}
                 size={rightSaveIconSize}
@@ -107,13 +104,11 @@ export default class CustomizedInput extends React.PureComponent {
                 onPress={() => this._handleStateValue('hideInputField', true)}
               />
             </View>
-          :
-            null
+            : null
         }
         {
           this.state.hideInputField || this.state.inputBlurred
-          ?
-            <View style={[styles.rightIconContainer, rightEditIconStyle, this.state.hideInputField ? { marginBottom: 0 } : {}]}>
+            ? <View style={[styles.rightIconContainer, rightEditIconStyle, this.state.hideInputField ? { marginBottom: 0 } : {}]}>
               <Icon
                 name={rightEditIconName}
                 size={rightEditIconSize}
@@ -122,17 +117,16 @@ export default class CustomizedInput extends React.PureComponent {
                 onPress={() => this._handleStateValue('hideInputField', false)}
               />
             </View>
-          :
-            null
+            : null
         }
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom:10,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'center'
@@ -149,6 +143,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   labelTextStyle: {
-    color: colors.green,
+    color: colors.green
   }
-});
+})

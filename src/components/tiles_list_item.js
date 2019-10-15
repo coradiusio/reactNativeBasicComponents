@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet
-} from 'react-native';
+} from 'react-native'
 
 import SVGImage from 'react-native-remote-svg'
 
-import Title from './title';
-import SubTitle from './sub_title';
+import Title from './title'
+import SubTitle from './sub_title'
 
-const leftImageDimension = 40;
-const rightImageDimension = 20;
+const leftImageDimension = 40
+const rightImageDimension = 20
 
 export default class TilesListItem extends React.PureComponent {
-  render() {
+  render () {
     const {
       icon,
       imageURL,
@@ -35,82 +35,70 @@ export default class TilesListItem extends React.PureComponent {
       subtitleType,
       containerStyle,
       elevation
-    } = this.props;
+    } = this.props
 
     return (
       <View style={[styles.container, containerStyle]} elevation={elevation || 0}>
         {
           icon || imageURL
-          ?
-            <View style={[styles.imageContainerStyle, { width: imageWidth || leftImageDimension, height: imageHeight || leftImageDimension }]}>
+            ? <View style={[styles.imageContainerStyle, { width: imageWidth || leftImageDimension, height: imageHeight || leftImageDimension }]}>
               {
-                icon || 
+                icon ||
                 <SVGImage
                   style={[styles.imageStyle, { width: imageWidth || leftImageDimension, height: imageHeight || leftImageDimension }]}
-                  source={{uri:imageURL}}
+                  source={{ uri: imageURL }}
                 />
               }
             </View>
-          :
-            null
+            : null
         }
         <View style={contentStyle}>
           {
             title
-            ?
-              <View style={titleContainerStyle}>
+              ? <View style={titleContainerStyle}>
                 {
                   typeof title === 'string'
-                  ?
-                    <Title
+                    ? <Title
                       text={title}
                       style={titleStyle}
                       type={titleType}
                     />
-                  :
-                    title
+                    : title
                 }
               </View>
-            :
-              null
+              : null
           }
           {
             subtitle
-            ?
-              <View style={subtitleContainerStyle}>
+              ? <View style={subtitleContainerStyle}>
                 {
                   typeof subtitle === 'string'
-                  ?
-                    <SubTitle
+                    ? <SubTitle
                       style={[styles.subtitle, subtitleStyle]}
                       text={subtitle}
                       type={subtitleType}
                     />
-                  :
-                    this.props.subtitle
+                    : this.props.subtitle
                 }
               </View>
-            :
-              null
+              : null
           }
         </View>
         {
           rightIcon || rightImageURL
-          ?
-            <View style={[styles.rightImageContainerStyle, { width: rightImageWidth || rightImageDimension, height: rightImageHeight || rightImageDimension }]}>
+            ? <View style={[styles.rightImageContainerStyle, { width: rightImageWidth || rightImageDimension, height: rightImageHeight || rightImageDimension }]}>
               {
-                rightIcon || 
+                rightIcon ||
                 <SVGImage
                   style={[styles.rightImageStyle, { width: rightImageWidth || rightImageDimension, height: rightImageHeight || rightImageDimension }]}
-                  source={{uri:rightImageURL}}
+                  source={{ uri: rightImageURL }}
                 />
               }
             </View>
-          :
-            null
+            : null
         }
       </View>
-    );
+    )
   }
 }
 
@@ -128,7 +116,7 @@ const styles = StyleSheet.create({
     height: 40
   },
   imageStyle: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   subtitle: {
     maxWidth: 210
@@ -143,6 +131,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   rightImageStyle: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   }
-});
+})

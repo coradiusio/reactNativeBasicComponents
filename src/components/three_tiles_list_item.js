@@ -1,24 +1,24 @@
-import React from 'react';
+import React from 'react'
 
 import {
   View,
   StyleSheet
-} from 'react-native';
+} from 'react-native'
 
-import SVGImage from 'react-native-remote-svg';
+import SVGImage from 'react-native-remote-svg'
 
-import Title from './title';
-import SubTitle from './sub_title';
+import Title from './title'
+import SubTitle from './sub_title'
 
 import {
   colors
-} from '../constants';
+} from '../constants'
 
-const leftImageDimension = 40;
-const rightImageDimension = 20;
+const leftImageDimension = 40
+const rightImageDimension = 20
 
 export default class ThreeTilesListItem extends React.PureComponent {
-  render() {
+  render () {
     const {
       leftIcon,
       leftImageURL,
@@ -45,110 +45,92 @@ export default class ThreeTilesListItem extends React.PureComponent {
       containerStyle,
       elevation,
       rightComponentContainerStyle
-    } = this.props;
+    } = this.props
 
     return (
       <View style={[styles.container, containerStyle]} elevation={elevation || 0}>
         {
           leftIcon || leftImageURL
-          ?
-            <View style={[styles.leftImageContainerStyle, { width: leftImageWidth || leftImageDimension, height: leftImageHeight || leftImageDimension }]}>
+            ? <View style={[styles.leftImageContainerStyle, { width: leftImageWidth || leftImageDimension, height: leftImageHeight || leftImageDimension }]}>
               {
-                leftIcon || 
+                leftIcon ||
                 <SVGImage
                   style={[styles.leftImageStyle, { width: leftImageWidth || leftImageDimension, height: leftImageHeight || leftImageDimension }]}
-                  source={{uri:leftImageURL}}
+                  source={{ uri: leftImageURL }}
                 />
               }
             </View>
-          :
-            null
+            : null
         }
         <View style={contentStyle}>
           {
             title
-            ?
-              <View style={titleContainerStyle}>
+              ? <View style={titleContainerStyle}>
                 {
                   typeof title === 'string'
-                  ?
-                    <Title
+                    ? <Title
                       text={title}
                       style={titleStyle}
                       type={titleType}
                     />
-                  :
-                    title
+                    : title
                 }
               </View>
-            :
-              null
+              : null
           }
           {
             subtitleFirst
-            ?
-              <View style={subtitleFirstContainerStyle}>
+              ? <View style={subtitleFirstContainerStyle}>
                 {
                   typeof subtitleFirst === 'string'
-                  ?
-                    <SubTitle
+                    ? <SubTitle
                       style={[styles.subtitleFirst, subtitleFirstStyle]}
                       text={subtitleFirst}
                       type={subtitleFirstType}
                     />
-                  :
-                    this.props.subtitleFirst
+                    : this.props.subtitleFirst
                 }
               </View>
-            :
-              null
+              : null
           }
           {
             subtitleSecond
-            ?
-              <View style={subtitleSecondContainerStyle}>
+              ? <View style={subtitleSecondContainerStyle}>
                 {
                   typeof subtitleSecond === 'string'
-                  ?
-                    <SubTitle
+                    ? <SubTitle
                       style={[styles.subtitleSecond, subtitleSecondStyle]}
                       text={subtitleSecond}
                       type={subtitleSecondType}
                     />
-                  :
-                    this.props.subtitleSecond
+                    : this.props.subtitleSecond
                 }
               </View>
-            :
-              null
+              : null
           }
         </View>
         {
           rightIcon || rightImageURL
-          ?
-            <View style={[styles.rightImageContainerStyle, { width: rightImageWidth || rightImageDimension, height: rightImageHeight || rightImageDimension }]}>
+            ? <View style={[styles.rightImageContainerStyle, { width: rightImageWidth || rightImageDimension, height: rightImageHeight || rightImageDimension }]}>
               {
-                rightIcon || 
+                rightIcon ||
                 <SVGImage
                   style={[styles.rightImageStyle, { width: rightImageWidth || rightImageDimension, height: rightImageHeight || rightImageDimension }]}
-                  source={{uri:rightImageURL}}
+                  source={{ uri: rightImageURL }}
                 />
               }
             </View>
-          :
-            null
+            : null
         }
         {
           rightComponent
-          ?
-            <View style={[styles.rightComponentContainerStyle, rightComponentContainerStyle]}>
+            ? <View style={[styles.rightComponentContainerStyle, rightComponentContainerStyle]}>
               {rightComponent}
             </View>
-          :
-            null
+            : null
         }
       </View>
-    );
+    )
   }
 }
 
@@ -166,7 +148,7 @@ const styles = StyleSheet.create({
     height: leftImageDimension
   },
   leftImageStyle: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   rightImageContainerStyle: {
     marginLeft: 16,
@@ -177,12 +159,12 @@ const styles = StyleSheet.create({
     top: 16
   },
   rightImageStyle: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   rightComponentContainerStyle: {
     marginLeft: 16,
     position: 'absolute',
     right: 16,
     top: 16
-  },
-});
+  }
+})
