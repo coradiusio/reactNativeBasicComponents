@@ -1,39 +1,16 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation'
 
 export default class TabFloatCard extends React.PureComponent {
 
-  TaskTabNav = () => {
-    const { tabContent, tabArray, tabBarOptions } = this.props
-    const renderTabs = {}
-    tabArray.map(tabName => {
-      renderTabs[tabName.toUpperCase()] = {
-        screen: ({ navigation }) => {
-          const showData = tabContent[tabName]()
-          return (
-            showData
-          )
-        }
-      }
-    })
-    const TabStack = createMaterialTopTabNavigator(renderTabs, {
-      initialRouteName: tabArray[0].toUpperCase(),
-      order: tabArray,
-      tabBarOptions: tabBarOptions
-    })
-    return createAppContainer(TabStack)
-  }
-
   render () {
-    const { title } = this.props
-    const TasksTabNav = this.TaskTabNav()
+    const { title, children } = this.props
     return (
       <View style={styles.cardBaseStyle}>
         <Text style={styles.titleStyler}>
           {title}
         </Text>
-        <TasksTabNav />
+        {children}
       </View>
     )
   }
